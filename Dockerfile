@@ -4,12 +4,12 @@ MAINTAINER DeepMarimba Devops <devops@mailman.deepmarimba.com>
 EXPOSE 80
 
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
-ADD Home.md /wiki/Home.md
+ADD dockerfiles/ /
 WORKDIR /wiki
 
-RUN chmod +x /usr/local/bin/dumb-init \
-    && apk add --no-cache -t build_util make cmake build-base git \
-    && apk add --no-cache icu-dev \
+RUN chmod +x /usr/local/bin/dumb-init /entrypoint.sh \
+    && apk add --no-cache -t build_util make cmake build-base \
+    && apk add --no-cache icu-dev git \
     && gem install github-linguist \
     && gem install gollum \
     && gem install github-markdown \
@@ -22,5 +22,5 @@ RUN chmod +x /usr/local/bin/dumb-init \
 \
     && apk del build_util
 
-ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
-CMD ["gollum", "--port", "80"]
+ENTRYPOINT ["/usr/local/bin/dumb-init", "--", "/entrypoint.sh"]
+CMD ["run"]
