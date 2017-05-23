@@ -10,9 +10,9 @@ WORKDIR /wiki
 RUN chmod +x /usr/local/bin/dumb-init /entrypoint.sh \
     && apk add --no-cache -t build_util make cmake build-base \
     && apk add --no-cache icu-dev git \
-    && gem install github-linguist \
-    && gem install gollum \
-    && gem install github-markdown \
+    && gem install github-linguist -v 5.0.10\
+    && gem install gollum -v 4.1.1 \
+    && gem install github-markdown -v 1.6.0 \
 \
     && git init \
     && git config user.name Nobody \
