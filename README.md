@@ -16,7 +16,7 @@ docker run -p 4567:80 -v $(pwd)/myproject:/wiki mrburrito/gfm
 
 <http://localhost:4567>
 
-## Enabling Editing
+### Read/Write Mode
 
 Gollum is started with the `--no-edit` option by default. If you want to enable editing
 from the container, use the command `edit` when running:
@@ -27,3 +27,10 @@ docker run -p 4567:80 -v $(pwd)/myproject:/wiki mrburrito/gfm edit
 ```
 
 All changes made in this mode will be attributed to "Anonymous."
+
+## Versions
+
+-   Ruby: `2.4`
+-   Gollum: `4.1.1`
+-   github-linguist: `5.0.10`
+-   github-markdown: `0.6.9`
